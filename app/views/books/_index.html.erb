@@ -28,7 +28,8 @@
               ♡<%= book.favorites.count %>
             <% end %>
           </td>
-        <% end %>
+          <% end %>
+          <td>コメント件数：<%= @book.book_comments.count %></td>
       </tr>
     <% end %>
   </tbody>
