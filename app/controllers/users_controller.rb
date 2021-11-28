@@ -3,8 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-   @books = Book.where(user_id:@user.id)
-    # @books = @user.books
+    @books = Book.where(user_id:@user.id)
     @book = Book.new
   end
 
@@ -25,6 +24,8 @@ class UsersController < ApplicationController
       render :edit
     end
   end
+
+   
 
   private
   def user_params
