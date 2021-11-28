@@ -32,7 +32,7 @@
            <%= link_to book_favorites_path(@book), method: :post do %>
                 ♡<%= @book.favorites.count %>
            <% end %>
-           </td>
+         </td>
         <% end %>
 
          <td>コメント件数：<%= @book.book_comments.count %></td>
@@ -68,9 +68,9 @@
       </table>
 
         <tbody>
-        <% if @book_comment.errors.any? %>
+          <% if @book_comment.errors.any? %>
           <% @book_comment.errors.full_messages.each do |message| %>
-            <%= message %>
+            <li><%= message %></li>
           <% end %>
         <% end %>
 

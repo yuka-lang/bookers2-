@@ -10,6 +10,7 @@ class BookCommentsController < ApplicationController
     if comment.save
     redirect_to book_path(book)
     else
+    # @book_comment = comment
     redirect_to book_path(book)
     end
   end
