@@ -7,6 +7,7 @@ class BookCommentsController < ApplicationController
     @comment.book_id = @book.id
     @comment.save
     @user = @book.user
+    @book_comment = BookComment.new
 
     # redirect_to book_path(@book)
     # else
@@ -15,7 +16,9 @@ class BookCommentsController < ApplicationController
 
   def destroy
     BookComment.find_by(id: params[:id]).destroy
-    redirect_to book_path(params[:book_id])
+    @book = Book.find(params[:book_id])
+    @user = @book.user
+    # redirect_to book_path(params[:book_id])
   end
 
    private

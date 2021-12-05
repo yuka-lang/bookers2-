@@ -1,4 +1,4 @@
 $(".comments_area").html("<%= j(render 'book_comments/comment', book: @book, user: @user) %>");
 $(".counts").html("<%= j(render 'book_comments/count', book: @book) %>");
 $("textarea").val('');
-
+$(".message").html("<%= j(render "book_comments/message" book_comment: @book_comment) %>");

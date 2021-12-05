@@ -24,14 +24,19 @@
           <%= render "favorites/favorite-btn", book: @book %>
          </td>
 
-         <td class= "counts">
+          <td class= "counts">
             <%= render "book_comments/count", book: @book %>
-         </td>
+          </td>
 
             <% if @book.user == current_user %>
-          <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success edit_book_#{@book.id}" %></td>
-          <td><%= link_to 'Destroy', book_path(@book), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@book.id}"%></td>
+          <td >
+              <%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success edit_book_#{@book.id}" %>
+          </td>
+          <td>
+              <%= link_to 'Destroy', book_path(@book), method: :delete,remote: true, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@book.id}"%>
+          </td>
           <% end %>
+
 
 
       </tr>
@@ -42,18 +47,19 @@
        </table>
 
 
-        <tbody>
-        <% if @book_comment.errors.any? %>
-          <% @book_comment.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        <% end %>
+        <tbody class= "message">
+          <%= render "book_comments/message", book_comment: @book_comment %>
+
+
+
         　　<% if @book.user != current_user %>
           <%= form_with(model:[@book, @book_comment]) do |f| %>
             <%= f.text_area :comment,rows:'5',class:"col-xl-8" %>
             <%= f.submit "送信する" %>
           <% end %>
          <% end %>
+
+
 
 
         </tbody>
