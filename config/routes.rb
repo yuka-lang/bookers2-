@@ -24,4 +24,7 @@ Rails.application.routes.draw do
     get "send/mail" => "groups#send_mail"
   end
 
+  resources :messages, :only => [:create]
+  resources :rooms, :only => [:create, :show]
+
 end
